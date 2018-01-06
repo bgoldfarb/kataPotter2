@@ -17,9 +17,8 @@ let kataPotter = {
         return numberOfBooks * bookPrice
     },
 
-    addBookToBookArray: (books, bookArray) => {
-        bookArray.push(books)
-
+    addBookToBookArray: (chosenBooks, bookArray) => {
+        bookArray.push(chosenBooks)
     },
 
     getUniqueBooks: (bookArray) => bookArray.filter((a,b) =>  b == bookArray.lastIndexOf(a)),
