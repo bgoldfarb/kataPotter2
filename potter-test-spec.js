@@ -44,6 +44,39 @@ describe('All Tests', function () {
         
     })
 
+    it('should return discounted price for two different books', () => {
+        const expectedPrice = 16
+        kataPotter.addBookToBookArray(Books[1],bookArray)
+        kataPotter.addBookToBookArray(Books[2],bookArray)        
+        expect(kataPotter.getTotalPrice(bookArray)).to.equal(15.2)
+        
+    })
+
+    it('should return discounted price for two different books', () => {
+        const expectedPrice = 16
+        kataPotter.addBookToBookArray(Books[2],bookArray)
+        kataPotter.addBookToBookArray(Books[5],bookArray)        
+        expect(kataPotter.getTotalPrice(bookArray)).to.equal(15.2)
+        
+    })
+
+    it('should return discounted price for two different books bought twice', () => {
+        const expectedPrice = 16
+        kataPotter.addBookToBookArray(Books[2],bookArray)
+        kataPotter.addBookToBookArray(Books[2],bookArray)
+        kataPotter.addBookToBookArray(Books[5],bookArray)
+        kataPotter.addBookToBookArray(Books[5],bookArray)                
+        expect(kataPotter.getTotalPrice(bookArray)).to.equal(30.4)
+    })
+
+    it('should return discounted price for two different books bought and the third book should not recieve discount', () => {
+        const expectedPrice = 16
+        kataPotter.addBookToBookArray(Books[2],bookArray)
+        kataPotter.addBookToBookArray(Books[3],bookArray)
+        kataPotter.addBookToBookArray(Books[2],bookArray)
+        expect(kataPotter.getTotalPrice(bookArray)).to.equal(23.20)
+    })
+
     
 
 
