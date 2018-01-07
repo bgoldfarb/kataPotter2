@@ -71,6 +71,74 @@ describe('All Tests', function () {
         expect(kataPotter.getTotalPrice()).to.equal(23.20)
     })
 
+    it('should return discounted price for three different books bought', () => {
+        const expectedPrice = 16
+        kataPotter.addBookToBookArray(Books[1],)
+        kataPotter.addBookToBookArray(Books[2],)
+        kataPotter.addBookToBookArray(Books[3],)
+        expect(kataPotter.getTotalPrice()).to.equal(21.60)
+    })
+
+
+    it('should return discounted price for three different books bought and not on the last book bought', () => {
+        const expectedPrice = 16
+        kataPotter.addBookToBookArray(Books[1],)
+        kataPotter.addBookToBookArray(Books[2],)
+        kataPotter.addBookToBookArray(Books[3],)
+        kataPotter.addBookToBookArray(Books[3],)
+        expect(kataPotter.getTotalPrice()).to.equal(29.60)
+    })
+
+    it('should pass the final test', () => {
+        const expectedPrice = 16
+        kataPotter.addBookToBookArray(Books[2])
+        kataPotter.addBookToBookArray(Books[3])
+        kataPotter.addBookToBookArray(Books[3])
+        kataPotter.addBookToBookArray(Books[4])
+        kataPotter.addBookToBookArray(Books[5])
+        expect(kataPotter.getTotalPrice()).to.equal(33.60)
+    })
+
+    it('six books, two same, 20% discount', () => {
+        const expectedPrice = 16
+        kataPotter.addBookToBookArray(Books[2])
+        kataPotter.addBookToBookArray(Books[2])
+        kataPotter.addBookToBookArray(Books[3])
+        kataPotter.addBookToBookArray(Books[3])
+        kataPotter.addBookToBookArray(Books[5])
+        kataPotter.addBookToBookArray(Books[1])
+        expect(kataPotter.getTotalPrice()).to.equal(40.80)
+    })
+
+    it('five different books', () => {
+        const expectedPrice = 16
+        kataPotter.addBookToBookArray(Books[1])
+        kataPotter.addBookToBookArray(Books[2])
+        kataPotter.addBookToBookArray(Books[3])
+        kataPotter.addBookToBookArray(Books[4])
+        kataPotter.addBookToBookArray(Books[5])
+        expect(kataPotter.getTotalPrice()).to.equal(30.00)
+    })
+
+
+    it('should pass the final test', () => {
+        kataPotter.addBookToBookArray(Books[1])
+        kataPotter.addBookToBookArray(Books[1])
+        kataPotter.addBookToBookArray(Books[1])
+        kataPotter.addBookToBookArray(Books[2])
+        kataPotter.addBookToBookArray(Books[2])
+        kataPotter.addBookToBookArray(Books[3])
+        kataPotter.addBookToBookArray(Books[3])
+        kataPotter.addBookToBookArray(Books[3])
+        kataPotter.addBookToBookArray(Books[3])
+        kataPotter.addBookToBookArray(Books[4])
+        kataPotter.addBookToBookArray(Books[4])
+        kataPotter.addBookToBookArray(Books[5])
+        expect(kataPotter.getTotalPrice()).to.equal(30+25.60+15.20+8)
+    })
+
+
+
     
 
 

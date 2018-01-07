@@ -22,10 +22,21 @@ let kataPotter = {
       console.log("Number of unique books: ", numberOfUniqueBooks)
       if (numberOfUniqueBooks === 2) {
         total += 2 * bookPrice * 0.95;
-      } else {
+      }
+      else if(numberOfUniqueBooks === 3){
+        total += 3 * bookPrice * 0.9;
+      }
+      else if(numberOfUniqueBooks === 4){
+        total += 4 * bookPrice * 0.8;
+      }
+      else if(numberOfUniqueBooks === 5){
+        total += 5 * bookPrice * 0.75;
+      }
+      else {
         total += bookPrice;
         console.log("The total is: ", total)
       }
+
       let distinctBooks = new Set(leftOverBooks.keys())
       console.log("Distinct books: ", distinctBooks)
       distinctBooks.forEach((i) => {
