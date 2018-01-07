@@ -7,17 +7,25 @@ let bookPrice = 8
 let kataPotter = {
 
     getTotalPrice: () => {
+
         if(bookMap.size === 0){
             return 0
         }
-        let numberOfBooks = kataPotter.getNumberOfBooks(bookMap)
-        let numberOfUniqueBooks = kataPotter.getNumberOfUniqueBooks(bookMap)      
-        if(numberOfUniqueBooks === 2){
-            bookMap = new Map()
-            return numberOfBooks * 8 * 0.95
-        }
+        let leftOverBooks = new Map(bookMap)
+        let numberOfRemainingBooks = kataPotter.getNumberOfBooks(leftOverBooks)
+        let numberOfUniqueBooks = kataPotter.getNumberOfUniqueBooks(leftOverBooks)    
+        let total = 0  
+        
+            if(numberOfUniqueBooks === 2){
+                total += numberOfRemainingBooks * bookPrice * 0.95
+            }
+            else{
+                total += numberOfRemainingBooks * bookPrice
+            }
+        
+        numberOfRemainingBooks = kataPotter.getNumberOfBooks(leftOverBooks)        
         bookMap = new Map()
-        return numberOfBooks * bookPrice
+        return total
     },
 
     addBookToBookArray: (chosenBooks) => {
