@@ -3,18 +3,29 @@ import Books from "./Books"
 let bookMap = new Map()
 let bookPrice = 8
 let total = 0
+let iteration = 1;
 
 let kataPotter = {
   getTotalPrice: () => {
     total = bookMap.size === 0 ? 0 : 0
     let leftOverBooks = new Map(bookMap)
+    console.log("Left Over Books: ", leftOverBooks)
     let numberOfRemainingBooks = kataPotter.getNumberOfBooks(leftOverBooks)
+    console.log("Number of Remaining books",numberOfRemainingBooks )
+    console.log("\n\n\n")
     while (numberOfRemainingBooks > 0) {
       let numberOfUniqueBooks = kataPotter.getNumberOfUniqueBooks(leftOverBooks)
+      console.log("Number of Unique books: ",numberOfUniqueBooks )
       let distinctBooks = new Set(leftOverBooks.keys())
+      console.log("The distinct books: ", distinctBooks)
       total = kataPotter.calculateDiscount(numberOfUniqueBooks, total)
+      console.log("The total now: ", total)
       leftOverBooks = kataPotter.placeBookInSet(distinctBooks, leftOverBooks)
+      console.log("Left Over Books: ",leftOverBooks )
       numberOfRemainingBooks = kataPotter.getNumberOfBooks(leftOverBooks)
+      console.log("Number of Remaining books: ", numberOfRemainingBooks)
+      console.log(`>>>>>>>Iteration: ${iteration} \n\n\n`)
+      iteration += 1
     }
     bookMap = kataPotter.resetMap()
     return total
@@ -48,12 +59,14 @@ let kataPotter = {
   },
 
   resetMap: () => new Map(),
+  
   addBookToBookArray: chosenBooks => {
     let amount = 0
     if (bookMap.has(chosenBooks)) {
       amount = bookMap.get(chosenBooks)
     }
     bookMap.set(chosenBooks, amount + 1)
+    console.log("The book map", bookMap)
   },
 
   getNumberOfUniqueBooks: bookMap => bookMap.size,
